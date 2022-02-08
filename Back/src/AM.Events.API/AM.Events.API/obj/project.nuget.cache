@@ -1,8 +1,8 @@
 {
   "version": 2,
-  "dgSpecHash": "woYFf+hC5QKBypxN+eVNuSEKXkNk/4aMpCP7gKImtYLYdigpVj5YJcv8VBk8sVa3o26srdKmxtDTkV8W+aydkA==",
+  "dgSpecHash": "Vmp8JlHMKhJnLqO6sxaDf777Wx8ArsxRbIACcv2pidV19I7GDG5Oq/yhBQLmYm2RACCUcqD8AgsrjSdXs4YA4A==",
   "success": true,
-  "projectFilePath": "C:\\Users\\ageno\\Documents\\IFICOMM.DEV\\GitHub\\am-events\\Back\\src\\AM.Events.API\\AM.Events.API\\AM.Events.API.csproj",
+  "projectFilePath": "C:\\Users\\ageno\\Documents\\IFICOMM.DEV\\GitHub\\am-events\\back\\src\\am.events.api\\am.events.api\\AM.Events.API.csproj",
   "expectedPackageFiles": [
     "C:\\Users\\ageno\\.nuget\\packages\\microsoft.extensions.apidescription.server\\3.0.0\\microsoft.extensions.apidescription.server.3.0.0.nupkg.sha512",
     "C:\\Users\\ageno\\.nuget\\packages\\microsoft.openapi\\1.2.3\\microsoft.openapi.1.2.3.nupkg.sha512",
