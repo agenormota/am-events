@@ -1,4 +1,17 @@
+using AM.Events.API.Data;
+using Microsoft.EntityFrameworkCore;
+
 var builder = WebApplication.CreateBuilder(args);
+
+
+builder.Services.AddDbContext<DataContext>(opts =>
+{
+    var connString = builder.Configuration.GetConnectionString("Default");
+    opts.UseSqlite(connString, options =>
+    {
+        options.MigrationsAssembly(typeof(DataContext).Assembly.FullName.Split(',')[0]);
+    });
+});
 
 // Add services to the container.
 
@@ -7,7 +20,7 @@ builder.Services.AddControllers();
 builder.Services.AddEndpointsApiExplorer();
 builder.Services.AddSwaggerGen();
 
-var app = builder.Build();
+await using var app = builder.Build();
 
 // Configure the HTTP request pipeline.
 if (app.Environment.IsDevelopment())

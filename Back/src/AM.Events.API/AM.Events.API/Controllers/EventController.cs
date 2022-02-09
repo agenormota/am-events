@@ -1,4 +1,5 @@
 using System.Linq;
+using AM.Events.API.Data;
 using AM.Events.API.Models;
 using Microsoft.AspNetCore.Mvc;
 
@@ -8,55 +9,22 @@ namespace AM.Events.API.Controllers
     [Route("[controller]")]
     public class EventController : ControllerBase
     {
-
-        public IEnumerable<Event> _events =  new Event[]
-        {             
-                new Event() {
-                    EventId = 1,
-                    Place = "Recife",
-                    EventDate = "13/05/2022",
-                    Theme = "Festival de Verão",
-                    TotalPeople = 9999,
-                    SalesLevel = "1",
-                    ImageURL = "http:www.google.com"
-                },
-                new Event() {
-                    EventId = 2,
-                    Place = "Recife",
-                    EventDate = "13/05/2022",
-                    Theme = "Festival de Verão",
-                    TotalPeople = 9999,
-                    SalesLevel = "1",
-                    ImageURL = "http:www.google.com"
-                },
-                 new Event() {
-                    EventId = 3,
-                    Place = "Recife",
-                    EventDate = "13/05/2022",
-                    Theme = "Festival de Verão",
-                    TotalPeople = 9999,
-                    SalesLevel = "1",
-                    ImageURL = "http:www.google.com"
-                },
-
-        };
-
-
-        public EventController()
+        public readonly DataContext _context;
+        public EventController(DataContext context)
         {
-
+            _context = context;
         }
 
         [HttpGet]
         public IEnumerable<Event> Get()
         {
-            return _events;
+            return _context.Events;
         }
 
          [HttpGet("{id}")]
         public IEnumerable<Event> GetById(int id)
         {
-            return _events.Where(e => e.EventId == id);
+            return _context.Events.Where(e => e.EventId == id);
         }
 
         [HttpPost]
