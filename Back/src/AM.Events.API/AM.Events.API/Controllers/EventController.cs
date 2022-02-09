@@ -1,3 +1,4 @@
+using System.Linq;
 using AM.Events.API.Models;
 using Microsoft.AspNetCore.Mvc;
 
@@ -8,27 +9,72 @@ namespace AM.Events.API.Controllers
     public class EventController : ControllerBase
     {
 
-        private static readonly string[] Summaries = new[]
-                {
-        "Freezing", "Bracing", "Chilly", "Cool", "Mild", "Warm", "Balmy", "Hot", "Sweltering", "Scorching"
-        };
-        private readonly ILogger<EventController> _logger;
+        public IEnumerable<Event> _events =  new Event[]
+        {             
+                new Event() {
+                    EventId = 1,
+                    Place = "Recife",
+                    EventDate = "13/05/2022",
+                    Theme = "Festival de Verão",
+                    TotalPeople = 9999,
+                    SalesLevel = "1",
+                    ImageURL = "http:www.google.com"
+                },
+                new Event() {
+                    EventId = 2,
+                    Place = "Recife",
+                    EventDate = "13/05/2022",
+                    Theme = "Festival de Verão",
+                    TotalPeople = 9999,
+                    SalesLevel = "1",
+                    ImageURL = "http:www.google.com"
+                },
+                 new Event() {
+                    EventId = 3,
+                    Place = "Recife",
+                    EventDate = "13/05/2022",
+                    Theme = "Festival de Verão",
+                    TotalPeople = 9999,
+                    SalesLevel = "1",
+                    ImageURL = "http:www.google.com"
+                },
 
-        public EventController(ILogger<EventController> logger)
+        };
+
+
+        public EventController()
         {
-            _logger = logger;
+
         }
 
-        [HttpGet(Name = "GeEvents")]
+        [HttpGet]
         public IEnumerable<Event> Get()
         {
-            return Enumerable.Range(1, 5).Select(index => new Event
-            {
-                Date = DateTime.Now.AddDays(index),
-                TemperatureC = Random.Shared.Next(-20, 55),
-                Summary = Summaries[Random.Shared.Next(Summaries.Length)]
-            })
-            .ToArray();
+            return _events;
+        }
+
+         [HttpGet("{id}")]
+        public IEnumerable<Event> GetById(int id)
+        {
+            return _events.Where(e => e.EventId == id);
+        }
+
+        [HttpPost]
+        public string Post()
+        {
+            return "Retorno Post";
+        }
+
+        [HttpPut("{id}")]
+        public string Post(int id)
+        {
+            return $"Retorno Put id:{id}";
+        }
+
+        [HttpDelete("{id}")]
+        public string Delete(int id)
+        {
+            return $"Retorno Delete id:{id}";
         }
 
     }

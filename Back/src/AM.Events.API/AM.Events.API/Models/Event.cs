@@ -2,12 +2,13 @@
 {
     public class Event
     {
-        public DateTime Date { get; set; }
+        public int EventId { get; set; }
+        public string Place { get; set; }
+        public string EventDate { get; set; }
+        public string Theme { get; set; }
+        public int TotalPeople { get; set; }
+        public string SalesLevel { get; set; }
+        public string ImageURL { get; set; }
 
-        public int TemperatureC { get; set; }
-
-        public int TemperatureF => 32 + (int)(TemperatureC / 0.5556);
-
-        public string? Summary { get; set; }
     }
 }
