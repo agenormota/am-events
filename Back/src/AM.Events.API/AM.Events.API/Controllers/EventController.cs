@@ -22,9 +22,9 @@ namespace AM.Events.API.Controllers
         }
 
          [HttpGet("{id}")]
-        public IEnumerable<Event> GetById(int id)
+        public Event GetById(int id)
         {
-            return _context.Events.Where(e => e.EventId == id);
+            return _context.Events.FirstOrDefault(e => e.EventId == id);
         }
 
         [HttpPost]
