@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { HttpClient } from '@angular/common/http';
 
 @Component({
   selector: 'app-speakers',
@@ -7,9 +8,21 @@ import { Component, OnInit } from '@angular/core';
 })
 export class SpeakersComponent implements OnInit {
 
-  constructor() { }
+  public speakers :any;
+
+  constructor(private http:HttpClient ) { }
 
   ngOnInit(): void {
+    this.getSpeakers();
+  }
+
+  public getSpeakers() : void {
+
+    this.http.get('https://localhost:7121/event').subscribe(
+      response => this.speakers = response,
+      error => console.log(error)
+    );
+
   }
 
 }
